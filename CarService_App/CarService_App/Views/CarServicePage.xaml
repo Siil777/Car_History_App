@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CarService_App.Views.CarServicePage"
+             xmlns:viewmodels="clr-namespace:CarService_App.ViewModels">
+    <ContentPage.BindingContext>
+        <viewmodels:CarViewModel />
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <Grid>
+            <!-- Background -->
+            <Image x:Name="opacityImage" Source="mercedes.webp" Aspect="AspectFill" />
+            <StackLayout>
+                <ListView x:Name="CarsList" ItemsSource="{Binding}" ItemSelected="OnCarSelected">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout>
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label FontFamily = "Lobster" Text="{Binding Brand}" FontSize="Large" TextColor="Black" />
+                                    </StackLayout>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <Button Text="Add" Clicked="CreateCar" />
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
+<!--fonts-->
+<!--https://learn.microsoft.com/en-us/xamarin/xamarin-forms/user-interface/text/fonts-->

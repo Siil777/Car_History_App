@@ -1,0 +1,29 @@
+﻿using SQLite;
+
+namespace CarService_App.Databases
+{
+    public class preload
+    {
+        private SQLiteConnection _database;
+
+        public preload(string dbPath)
+        {
+            _database = new SQLiteConnection(dbPath);
+            // Other initialization code if needed
+        }
+
+        public void CreateTable()
+        {
+            _database.CreateTable<Car>(); // Assuming you have a Car class for mapping
+        }
+
+        public void InsertSampleData()
+        {
+            // Insert sample data into the Cars table
+            _database.Insert(new Car { Brand = "Toyota", Model = "Camry", Year = 2022, Description = "A reliable sedan", ImagePath = "Toyota.png" });
+            _database.Insert(new Car { Brand = "Honda", Model = "Accord", Year = 2022, Description = "A popular family car", ImagePath = "Honda.webp" });
+            _database.Insert(new Car { Brand = "Ford", Model = "Mustang", Year = 2022, Description = "A classic muscle car", ImagePath = "Ford.jpg" });
+          
+        }
+    }
+}
