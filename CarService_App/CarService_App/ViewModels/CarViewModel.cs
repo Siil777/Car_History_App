@@ -55,7 +55,7 @@ namespace CarService_App.ViewModels
 
 
 
-        // Add methods for updating the database as needed (e.g., Insert, Update)
+        // Add methods for updating the database
         public void AddOrUpdateCar(Car car)
         {
             var existingCar = Cars.FirstOrDefault(c => c.CarId == car.CarId);

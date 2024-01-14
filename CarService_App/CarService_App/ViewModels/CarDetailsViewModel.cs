@@ -12,7 +12,7 @@ namespace CarService_App.ViewModels
         private int _year;
         private string _description;
         private string _imagePath;
-        private int _carId;  // property for the car ID
+        private int _carId; 
 
         public int CarId
         {

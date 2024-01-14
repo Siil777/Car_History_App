@@ -27,7 +27,8 @@
             <Image Source="{Binding ImagePath}" Aspect="AspectFit" />
 
             <Button Text="Save" Clicked="SaveButton_Clicked" />
-            </StackLayout>
+            <Button Text="Delete" Clicked="Delete_Clicked_2" />
+        </StackLayout>
         </ContentPage.Content>
     </ContentPage>
 

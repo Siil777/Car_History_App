@@ -2,7 +2,9 @@
 using SQLite;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 using System.Linq;
+using Xamarin.Forms;
 
 namespace CarService_App.Services
 {
@@ -20,6 +22,7 @@ namespace CarService_App.Services
         {
             try
             {
+                //safeguard to prevent accessing the database before it's properly set up
                 if (database == null)
                 {
                     throw new Exception("Database is not initialized. Call Initialize method first.");
@@ -34,12 +37,13 @@ namespace CarService_App.Services
                 throw;
             }
         }
-
+        //
         public List<Car> GetCarAll()
         {
             try
             {
-                // _database.Table<Car>() returns all cars in the table
+                // database.Table<Car>() returns all cars in the table
+                // retrieves all rows (records) from the Car table
                 return database.Table<Car>().ToList();
             }
             catch (Exception ex)
@@ -60,7 +64,7 @@ namespace CarService_App.Services
                     // New car, add to the collection and insert into the database
                     InsertCar(car);
                 }
-                else
+                 else
                 {
                     // Existing car, update the collection and database
                     existingCar.Brand = car.Brand;
@@ -71,6 +75,7 @@ namespace CarService_App.Services
 
                     UpdateCar(existingCar);
                 }
+              
 
                 return car;
             }
@@ -79,31 +84,33 @@ namespace CarService_App.Services
                 Console.WriteLine($"Error adding or updating car: {ex.Message}");
                 return null; // Indicates failure
             }
+        
         }
 
 
 
-
+        //Insert a new Car object using Insert method
         public Car InsertCar(Car car)
         {
             try
             {
                 database.Insert(car);
-                return car; // Indicates successful insertion
+                return car; // successful insertion
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"Error inserting car into the database: {ex.Message}");
-                return null; // Indicates failure
+                return null; //  failure
             }
         }
 
+        //Update existing Car object in the database using Update method
         public Car UpdateCar(Car car)
         {
             try
             {
                 database.Update(car);
-                return car; // Indicates successful update
+                return car; // successful update
             }
             catch (Exception ex)
             {
@@ -114,10 +121,36 @@ namespace CarService_App.Services
 
 
 
+
+
         public Car GetCarById(int carId)
         {
             return database.Table<Car>().FirstOrDefault(c => c.CarId == carId);
         }
+
+        public Car DeleteCar(int carId)
+        {
+            try
+            {
+                var carToDelete = GetCarById(carId);
+                if (carToDelete != null)
+                {
+                    database.Delete(carToDelete);
+                    return carToDelete;
+                }
+                else
+                {
+                    Console.WriteLine($"Car with ID {carId} not found.");
+                    return null; 
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error deleting car from the database: {ex.Message}");
+                return null; 
+            }
+        }
+
     }
 
 

@@ -21,7 +21,7 @@ namespace CarService_App.Views
         protected override void OnAppearing()
         {
             // Refresh the list of cars when the page appears
-            // to get all cars
+            // Assuming you want to get all cars
             CarsList.ItemsSource = App.Database.GetCarAll();
 
             base.OnAppearing();
@@ -59,6 +59,22 @@ namespace CarService_App.Views
             // Navigate to CarDetailsPage for adding a new car
             await Navigation.PushAsync(CarPage);
         }
+        public async void DeleteCar(object sender, EventArgs e)
+        {
+            bool answer = await DisplayAlert("Confirm Deletion", "Are you sure you want to delete this friend?", "Yes", "No");
+            if (answer)
+            {
+                var Car = (Car)BindingContext;
+                App.Database.DeleteCar(Car.CarId); // Assuming CarId is the unique identifier
+
+                // If DeleteCar returns a Car object, you can use it like this:
+                // var deletedCar = App.Database.DeleteCar(friend.CarId);
+                // If needed, you can handle the deletedCar object
+
+                this.Navigation.PopAsync();
+            }
+        }
+
     }
 }
 

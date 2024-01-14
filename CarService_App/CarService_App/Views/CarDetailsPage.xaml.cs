@@ -24,8 +24,9 @@ namespace CarService_App.Views
                 // Check if any property of _viewModel is null before accessing it
                 if (_viewModel.Brand != null && _viewModel.Model != null && _viewModel.Description != null)
                 {
-                    // Use the CarViewModel to update the database
+                    //  CarViewModel to update the database
                     App.Database.AddOrUpdateCar(_viewModel.ToCar());
+                    this.Navigation.PopAsync();
 
                     await DisplayAlert("Success", "Data saved successfully!", "OK");
                 }
@@ -36,9 +37,26 @@ namespace CarService_App.Views
             }
         }
 
+        private async void Delete_Clicked_2(object sender, EventArgs e)
+        {
+            if (_viewModel != null)
+            {
+                // Check if any property of _viewModel is null before accessing it
+                if (_viewModel.Brand != null && _viewModel.Model != null && _viewModel.Description != null)
+                {
+                    //  CarViewModel to update the database
+                    App.Database.DeleteCar(_viewModel.CarId);
+                    this.Navigation.PopAsync();
 
+                    await DisplayAlert("Success", "Data saved successfully!", "OK");
+                }
+                else
+                {
+                    await DisplayAlert("Error", "One or more properties of the view model are null.", "OK");
+                }
+            }
 
-
+        }
     }
 
 }
