@@ -11,23 +11,22 @@
     <ContentPage.Content>
             <StackLayout>
                 <Label Text="Brand" />
-                <Entry Text="{Binding Brand}" />
-
-                <Label Text="Model" />
-                <Entry Text="{Binding Model}" />
-
-                <Label Text="Year" />
-                <Entry Text="{Binding Year}" Keyboard="Numeric" />
-
-                <Label Text="Description" />
-                <Editor Text="{Binding Description}" />
-
-                <Label Text="Image Path" />
+            <Entry Text="{Binding Brand}" />
+            <Label Text="Model" />
+            <Entry Text="{Binding Model}" />
+            <Label Text="Year" />
+            <Entry Text="{Binding Year}" Keyboard="Numeric" />
+            <Label Text="Description" />
+            <Editor Text="{Binding Description}" />
+            <Label Text="Image Path" />
                 <Entry Text="{Binding ImagePath}" />
             <Image Source="{Binding ImagePath}" Aspect="AspectFit" />
-
-            <Button Text="Save" Clicked="SaveButton_Clicked" />
-            <Button Text="Delete" Clicked="Delete_Clicked_2" />
+            <Frame BorderColor="AliceBlue" BackgroundColor="Transparent" Padding="10" CornerRadius="20" HasShadow="True">
+                <Button Text="Save" Clicked="SaveButton_Clicked" />
+            </Frame>
+            <Frame BorderColor="AliceBlue" BackgroundColor="Transparent" Padding="10" CornerRadius="20" HasShadow="True">
+                <Button Text="Delete" Clicked="Delete_Clicked_2" />
+            </Frame>
         </StackLayout>
         </ContentPage.Content>
     </ContentPage>

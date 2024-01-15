@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CarService_App.Views.StyledEntry">
+    <ContentView.Content>
+        <Frame BorderColor="Blue" BackgroundColor="Transparent" Padding="10" CornerRadius="20" HasShadow="True">
+            <Entry x:Name="styledEntry" Text="{Binding Text}" Placeholder="{Binding Placeholder}" />
+        </Frame>
+    </ContentView.Content>
+</ContentView>

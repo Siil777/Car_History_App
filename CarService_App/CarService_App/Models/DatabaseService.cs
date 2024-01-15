@@ -82,7 +82,7 @@ namespace CarService_App.Services
             catch (Exception ex)
             {
                 Console.WriteLine($"Error adding or updating car: {ex.Message}");
-                return null; // Indicates failure
+                return null; 
             }
         
         }
@@ -95,12 +95,12 @@ namespace CarService_App.Services
             try
             {
                 database.Insert(car);
-                return car; // successful insertion
+                return car; 
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"Error inserting car into the database: {ex.Message}");
-                return null; //  failure
+                return null; 
             }
         }
 
@@ -110,12 +110,12 @@ namespace CarService_App.Services
             try
             {
                 database.Update(car);
-                return car; // successful update
+                return car; 
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"Error updating car in the database: {ex.Message}");
-                return null; // Indicates failure
+                return null;
             }
         }
 
